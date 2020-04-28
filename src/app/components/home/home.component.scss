@@ -1,0 +1,118 @@
+.container {
+  display: grid;
+  grid-template-rows: 34px auto auto;
+
+  header {
+    display: grid;
+    grid-template-columns: 85% auto;
+    padding: 8px;
+    background-color: #3a3a3a;
+
+    strong {
+      -webkit-app-region: drag;
+      color: #fff;
+
+      span {
+        color: grey;
+      }
+
+    }
+
+    nav {
+      justify-self: right;
+
+      ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+
+        li {
+          float: left;
+          margin-left: 8px;
+
+          img {
+            width: 12px;
+            cursor: pointer;
+          }
+
+          img#min {
+            padding: 10px;
+          }
+        }
+      }
+    }
+  }
+
+  input {
+    background-color: #DBDBDB;
+    border: 0;
+    padding: 12px;
+    color: gray;
+    font-family: 'Montserrat';
+    outline: none;
+  }
+
+  main {
+    .git-user {
+      background-color: #EBEBEB;
+      display: grid;
+      grid-template-columns: 30px 40px repeat(2, auto);
+      padding: 20px 20px 10px 10px;
+
+      border-bottom: solid 1px #ccc;
+
+      &:hover {
+        box-sizing: border-box;
+        cursor: pointer;
+        box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
+        0 8px 10px 1px rgba(0, 0, 0, 0.14),
+        0 3px 14px 2px rgba(0, 0, 0, 0.12);
+      }
+
+
+      figure {
+        margin: 0;
+        padding-bottom: 10px;
+
+        img {
+          border-radius: 50%;
+          float: left;
+          width: 50px;
+          margin-right: 10px;
+        }
+
+        figcaption {
+          margin-left: 60px;
+          font-size: 12px;
+
+          .hidden-captions {
+            width: 200px;
+          }
+
+          .caption-icon {
+            vertical-align: middle
+          }
+
+          a {
+            text-decoration: none;
+            color: black;
+          }
+
+        }
+      }
+
+      .stats {
+        justify-self: right;
+
+        strong {
+          font-size: 1em;
+          display: block;
+        }
+
+        div {
+          font-size: .8em;
+        }
+      }
+    }
+  }
+}

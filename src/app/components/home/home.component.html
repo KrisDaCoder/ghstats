@@ -1,0 +1,93 @@
+<div class="container">
+  <header>
+    <strong><span>GH</span>STATS</strong>
+    <nav>
+      <ul>
+        <li><img src="./assets/btn-min.svg" class="image-input" id="min" (click)="minimizeWindow()"></li>
+        <li><img src="./assets/btn-close.svg" (click)="closeWindow()"></li>
+      </ul>
+    </nav>
+  </header>
+  <input type="text"
+         placeholder="Search by Github username"
+         (keyup.enter)="addRepo($event.target.value)"
+         [formControl]="myControl"
+         [matAutocomplete]="auto">
+  <mat-autocomplete #auto="matAutocomplete">
+    <mat-option *ngFor="let option of filteredOptions | async" [value]="option.login">
+      <div class="search-box">
+        <img class="search-img" [src]="option.avatarUrl" alt="" style="vertical-align: middle;">
+        <span class="search-text">{{ option.login }}<strong *ngIf="option.name"> | {{ option.name }}</strong></span>
+      </div>
+    </mat-option>
+  </mat-autocomplete>
+  <main>
+    <div class="git-user" (click)="account.value.showMore = !account.value.showMore" *ngFor="let account of accounts | keyvalue: asIsOrder">
+      <button class="delete-button" mat-icon-button (click)="deleteAccountInfo(account)">
+        <mat-icon color="warn" inline="true">clear</mat-icon>
+      </button>
+      <button mat-icon-button>
+        <mat-icon *ngIf="account.value.showMore">expand_more</mat-icon>
+        <mat-icon *ngIf="!account.value.showMore">expand_less</mat-icon>
+      </button>
+      <figure>
+        <img [src]="account.value.repositoryOwner.avatarUrl" alt="">
+        <figcaption [ngStyle]="{'margin-top': account.value.showMore ? '14px' : '1px'}">
+          <span>
+            {{ account.value.repositoryOwner.name }}
+          </span>
+          <br>
+          <div class="hidden-captions">
+            <span *ngIf="!account.value.showMore && account.value.repositoryOwner.login">
+            {{ account.value.repositoryOwner.login }}
+            </span>
+            <br *ngIf="!account.value.showMore && account.value.repositoryOwner.login">
+            <span *ngIf="!account.value.showMore && account.value.repositoryOwner.bio">
+              {{ account.value.repositoryOwner.bio }}
+            </span>
+            <br *ngIf="!account.value.showMore && account.value.repositoryOwner.bio">
+            <span *ngIf="!account.value.showMore && account.value.repositoryOwner.company">
+              <mat-icon class="caption-icon">group</mat-icon>
+              {{ account.value.repositoryOwner.company }}
+            </span>
+            <br *ngIf="!account.value.showMore && account.value.repositoryOwner.company">
+            <span *ngIf="!account.value.showMore && account.value.repositoryOwner.location">
+               <mat-icon class="caption-icon">location_on</mat-icon>
+              {{ account.value.repositoryOwner.location }}
+            </span>
+            <br *ngIf="!account.value.showMore && account.value.repositoryOwner.location">
+            <span *ngIf="!account.value.showMore && account.value.repositoryOwner.email">
+               <mat-icon class="caption-icon">email</mat-icon>
+              <a href="mailto: {{ account.value.repositoryOwner.email }}}">
+                {{ account.value.repositoryOwner.email }}
+              </a>
+            </span>
+            <br *ngIf="!account.value.showMore && account.value.repositoryOwner.email">
+            <span *ngIf="!account.value.showMore && account.value.repositoryOwner.url">
+              <mat-icon class="caption-icon">http</mat-icon>
+              <a target="_blank" href="{{account.value.repositoryOwner.url}}">
+                {{ account.value.repositoryOwner.url }}
+              </a>
+            </span>
+          </div>
+        </figcaption>
+      </figure>
+      <div class="stats">
+        <strong>{{ account.value.repositoryOwner.repositories.totalCount | number }}</strong>
+        <div>REPOSITORIES</div>
+          <strong *ngIf="!account.value.showMore && account.value.repositoryOwner.followers.totalCount">
+            {{ account.value.repositoryOwner.followers.totalCount | number }}
+          </strong>
+          <div *ngIf="!account.value.showMore && account.value.repositoryOwner.followers.totalCount">
+            FOLLOWERS
+          </div>
+          <strong *ngIf="!account.value.showMore && account.value.repositoryOwner.following.totalCount">
+            {{ account.value.repositoryOwner.following.totalCount | number }}
+          </strong>
+          <div *ngIf="!account.value.showMore && account.value.repositoryOwner.following.totalCount">
+            FOLLOWING
+          </div>
+      </div>
+    </div>
+  </main>
+</div>

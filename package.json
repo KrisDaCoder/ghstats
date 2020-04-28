@@ -1,0 +1,75 @@
+{
+  "name": "ghstats",
+  "version": "0.0.0",
+  "main": "electron/dist/main.js",
+  "scripts": {
+    "ng": "ng",
+    "start": "ng serve",
+    "build": "ng build",
+    "test": "ng test",
+    "lint": "ng lint",
+    "e2e": "ng e2e",
+    "electron": "ng build --base-href ./ && tsc --p electron && electron .",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder"
+  },
+  "build": {
+    "appId": "com.kristjan.ghstats",
+    "mac": {
+      "category": "public.app-category.developer-tools",
+      "target": "dmg"
+    },
+    "productName": "GHStats",
+    "directories": {
+      "output": "release/"
+    }
+  },
+  "private": true,
+  "dependencies": {
+    "@angular/animations": "~9.1.0",
+    "@angular/cdk": "^9.2.1",
+    "@angular/common": "~9.1.0",
+    "@angular/compiler": "~9.1.0",
+    "@angular/core": "~9.1.0",
+    "@angular/forms": "~9.1.0",
+    "@angular/material": "^9.2.1",
+    "@angular/platform-browser": "~9.1.0",
+    "@angular/platform-browser-dynamic": "~9.1.0",
+    "@angular/router": "~9.1.0",
+    "apollo-angular": "^1.9.0",
+    "apollo-angular-link-http": "^1.10.0",
+    "apollo-cache-inmemory": "^1.6.0",
+    "apollo-client": "^2.6.0",
+    "apollo-link": "^1.2.11",
+    "apollo-link-context": "^1.0.20",
+    "graphql": "^14.6.0",
+    "graphql-tag": "^2.10.0",
+    "rxjs": "~6.5.4",
+    "tslib": "^1.10.0",
+    "zone.js": "~0.10.2"
+  },
+  "devDependencies": {
+    "@angular-devkit/build-angular": "~0.901.0",
+    "@angular/cli": "~9.1.0",
+    "@angular/compiler-cli": "~9.1.0",
+    "@angular/language-service": "~9.1.0",
+    "@types/electron": "^1.6.10",
+    "@types/jasmine": "~3.5.0",
+    "@types/jasminewd2": "~2.0.3",
+    "@types/node": "^12.11.1",
+    "codelyzer": "^5.1.2",
+    "electron": "^8.2.0",
+    "electron-builder": "^22.5.1",
+    "jasmine-core": "~3.5.0",
+    "jasmine-spec-reporter": "~4.2.1",
+    "karma": "~4.4.1",
+    "karma-chrome-launcher": "~3.1.0",
+    "karma-coverage-istanbul-reporter": "~2.1.0",
+    "karma-jasmine": "~3.0.1",
+    "karma-jasmine-html-reporter": "^1.4.2",
+    "protractor": "~5.4.3",
+    "ts-node": "~8.3.0",
+    "tslint": "~6.1.0",
+    "typescript": "~3.8.3"
+  }
+}
